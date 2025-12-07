@@ -21,7 +21,7 @@ router.get('/instrutores', async (_, res) => {
 });
 
 // POST - cadastrar instrutor
-router.post('/instrures', async (req, res) => {
+router.post('/instrutores', async (req, res) => {
   const { nome, telefone, turno, especialidade } = req.body as Instrutor;
 
   try {
@@ -49,11 +49,11 @@ router.put('/instrutores/:id', async (req, res) => {
 
   try {
     const query = `
-      UPDADE instrutor
-      SET nome = $2,
-          telefone = $3,
-          turno = $4,
-          especialidade = $5,
+      UPDATE instrutor  
+      SET nome = COALESCE($2, nome),
+          telefone = COALESCE($3, telefone),
+          turno = COALESCE($4, turno),
+          especialidade = COALESCE($5, especialidade)
       WHERE id_instrutor = $1
       RETURNING *;
     `;
@@ -68,7 +68,7 @@ router.put('/instrutores/:id', async (req, res) => {
     return res.status(200).json(resultado.rows[0]);
   } catch (erro) {
     console.error(erro);
-    return res.status(500).json({ erro: 'Erro ao buscar instrutores!' });
+    return res.status(500).json({ erro: 'Erro ao atualizar instrutor!' });
   }
 });
 

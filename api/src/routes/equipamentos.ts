@@ -1,4 +1,4 @@
-import e, { Router } from 'express';
+import { Router } from 'express';
 import { pool } from '../db';
 import { Equipamento } from '../types/types';
 
@@ -42,17 +42,17 @@ router.post('/equipamentos', async (req, res) => {
 });
 
 // PUT - atualizar dados do equipamento
-router.get('/equipamentos/:id', async (req, res) => {
+router.put('/equipamentos/:id', async (req, res) => {
   const { id } = req.params;
   const { nome, status, marca, tipo } = req.body as Equipamento;
 
   try {
     const query = `
       UPDATE equipamento
-      SET nome = $2,
-          status = $3,
-          marca = $4,
-          tipo = $5,
+      SET nome = COALESCE($2, nome),
+          status = COALESCE($3, status),
+          marca = COALESCE($4, marca),
+          tipo = COALESCE($5, tipo)
       WHERE id_equipamento = $1
       RETURNING *;
     `;
@@ -72,7 +72,7 @@ router.get('/equipamentos/:id', async (req, res) => {
 });
 
 // DELETE - deletar equipamento
-router.get('/equipamentos/:id', async (req, res) => {
+router.delete('/equipamentos/:id', async (req, res) => {
   const { id } = req.params;
 
   try {

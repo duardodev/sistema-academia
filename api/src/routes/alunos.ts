@@ -49,10 +49,10 @@ router.put('/alunos/:id', async (req, res) => {
   try {
     const query = `
       UPDATE aluno
-      SET nome = $2,
-          data_nascimento = $3,
-          sexo = $4,
-          telefone = $5
+      SET nome = COALESCE($2, nome),
+          data_nascimento = COALESCE($3, data_nascimento),
+          sexo = COALESCE($4, sexo),
+          telefone = COALESCE($5, telefone)
       WHERE id_aluno = $1
       RETURNING *;
     `;

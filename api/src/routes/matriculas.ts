@@ -41,7 +41,7 @@ router.post('/matriculas', async (req, res) => {
   try {
     const query = `
       INSERT INTO matricula (id_aluno, id_plano, status, data_inicio, data_termino)
-      VALUES ($1, $2, $3, $4, $5)
+      VALUES ($1, $2, $3, COALESCE($4, CURRENT_DATE), $5)
       RETURNING *;
     `;
 
@@ -91,7 +91,7 @@ router.put('/matriculas/:id', async (req, res) => {
 });
 
 // DELETE - deletar matrícula
-router.delete('/matricula/:id', async (req, res) => {
+router.delete('/matriculas/:id', async (req, res) => {
   const { id } = req.params;
 
   try {
