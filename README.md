@@ -301,7 +301,7 @@ psql -U seu_usuario -d academia_db
 **Disciplinas**: Modelagem de Dados e Estruturas de Dados  
 **Instituição**: UNIMAM  
 **Curso**: Sistemas para Internet  
-**Semestre**: 2025.2  
+**Turma**: 2025.1 
 **Professora**: Maria Eduarda Lima Santos
 
 ---
