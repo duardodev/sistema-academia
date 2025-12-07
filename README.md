@@ -100,7 +100,7 @@ psql -d academia_db -f database/schema.sql
 
 ### 3. Configurar a API
 
-````bash
+```bash
 cd api
 
 # Instalar dependências
@@ -109,8 +109,11 @@ npm install
 # Criar arquivo .env
 cp .env.example .env
 
-**Exemplo de `.env` que deve ser preenchido:**
+# Editar .env com suas configurações
+nano .env
+```
 
+**Exemplo de `.env` que deve ser preenchido:**
 ```env
 PORT=3000
 DB_HOST=localhost
@@ -118,7 +121,7 @@ DB_PORT=5432
 DB_USER=seu_usuario
 DB_PASSWORD=sua_senha
 DB_NAME=academia_db
-````
+```
 
 ### 4. Compilar o Programa C++ C++
 
@@ -165,7 +168,7 @@ make
 ```bash
 cd api
 
-# Modo desenvolvimento (com hot-reload)
+# Modo desenvolvimento
 npm run dev
 
 # Ou modo produção
@@ -296,7 +299,7 @@ psql -U seu_usuario -d academia_db
 - Lucas Souza
 - João Marcos
 
-**Disciplinas**: Modelagem de Dados e Estrutura de Dados  
+**Disciplinas**: Modelagem de Dados e Estruturas de Dados  
 **Instituição**: UNIMAM  
 **Curso**: Sistemas para Internet  
 **Semestre**: 2025.2  
