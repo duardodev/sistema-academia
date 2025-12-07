@@ -95,7 +95,7 @@ cd sistema-academia
 createdb academia_db
 
 # Executar script SQL (criar tabelas)
-psql -d academia_db -f database/schema.sql
+psql -d academia_db -f database/DDL.sql
 ```
 
 ### 3. Configurar a API
@@ -111,6 +111,7 @@ cp .env.example .env
 ```
 
 **Exemplo de `.env` que deve ser preenchido:**
+
 ```env
 PORT=3000
 DB_HOST=localhost
@@ -235,10 +236,11 @@ sistema-academia/
 │   ├── plano_crud.cpp
 │   └── matricula_crud.cpp
 │
-├── database/                     # Scripts SQL
-│   └── schema.sql               # DDL do banco
+├── database/                      # Scripts SQL
+│   ├── DDL.sql                   # DDL do banco
+│   └── DML.sql                   # DML para popular tabelas
 │
-├── CMakeLists.txt               # Configuração CMake
+├── CMakeLists.txt                # Configuração CMake
 ├── .gitignore
 └── README.md
 ```
