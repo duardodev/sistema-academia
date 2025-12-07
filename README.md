@@ -108,9 +108,6 @@ npm install
 
 # Criar arquivo .env
 cp .env.example .env
-
-# Editar .env com suas configurações
-nano .env
 ```
 
 **Exemplo de `.env` que deve ser preenchido:**
